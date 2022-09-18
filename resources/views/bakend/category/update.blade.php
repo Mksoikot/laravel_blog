@@ -1,4 +1,5 @@
 @extends('bakend.layouts.master')
+@section('title','Update Catagoris')
 @section('content')
         <div class="container-fluid">
 

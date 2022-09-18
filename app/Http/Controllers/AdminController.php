@@ -18,6 +18,8 @@ class AdminController extends Controller
         ]);
     $usercheck=Admin::where(['email'=>$request->email,'password'=>$request->password])->count();
     if($usercheck > 0){
+        $adminData=Admin::where(['email'=>$request->email,'password'=>$request->password])->first();
+        session(['adminData'=>$adminData]);
         return redirect('admin/dashboard');
         }else{
             return redirect('admin/login')->with('error','Invalied Email/Password!!');
@@ -26,4 +28,11 @@ class AdminController extends Controller
     function Dashboard(){
         return view('bakend.dashboard');
     }
+    // logout
+    function logout() {
+    session()->forget(['adminData']);
+    return redirect('admin/login');
 }
+}
+
+

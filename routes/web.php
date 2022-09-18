@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\postController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,12 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/',[HomeController::class,'Home']);
 Route::get('/admin/login',[AdminController::class,'Login']);
+Route::get('/admin/logout',[AdminController::class,'logout']);
 Route::post('/admin/login',[AdminController::class,'Submit_login']);
 Route::get('/admin/dashboard',[AdminController::class,'Dashboard']);
+//categoris
 Route::get('admin/category/{id}/delete',[CategoryController::class,'destroy']);
 Route::resource('admin/category',CategoryController::class);
+//post
+Route::get('admin/post/{id}/delete',[postController::class,'destroy']);
+Route::resource('admin/post',postController::class);
